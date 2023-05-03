@@ -1,0 +1,18 @@
+name: Performance check
+
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+
+jobs:
+  end-to-end:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Page Speed Insights
+        uses: JakePartusch/psi-action@v1.3
+        with:
+          url: "https://e-commerce-kib.netlify.app/"
+          threshold: 60
+          strategy: mobile
